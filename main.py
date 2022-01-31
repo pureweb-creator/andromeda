@@ -43,9 +43,11 @@ def main(message):
         json.dump(list_obj, out_f)
     
     user = list_obj[-3]["message_text"]
-    msg = "\n"+str(list_obj[-2]["message_text"])+"\n\n\nПользователь: "+user+"\nКурьер: "+str(list_obj[-1])+" от "+get_last_sunday()
+    courier = list_obj[-1]
 
-    bot.send_message(message.chat.id, msg,reply_markup=mm)
+    msg = "\n"+str(list_obj[-2]["message_text"])+"\n\n\nПользователь: "+user+"\nКурьер: "+courier+" от "+get_last_sunday()
+
+    bot.send_message(message.chat.id, msg, reply_markup=mm)
 
 if __name__ == '__main__':
     bot.infinity_polling() 

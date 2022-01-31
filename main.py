@@ -6,6 +6,7 @@ from telebot import types
 import json
 
 bot = telebot.TeleBot(cfg.token)
+filepath = "src/msg.txt"
 list_obj = []
 
 def get_last_sunday():
@@ -33,7 +34,7 @@ mm.add(button1,button2,button3,button4,button5,button6,button7,button8,button9,b
 
 @bot.message_handler(content_types=["text"])
 def main(message):
-    with open('msg.txt','r') as input_f:
+    with open(filepath,'r') as input_f:
         list_obj = json.load(input_f)
 
     del list_obj[:-12] #clear file
@@ -41,7 +42,7 @@ def main(message):
     list_obj.append({
         'message_text': message.text
     })
-    with open('msg.txt','w') as out_f:
+    with open(filepath,'w') as out_f:
         json.dump(list_obj, out_f)
     
     user = list_obj[-3]["message_text"]

@@ -36,16 +36,16 @@ def main(message):
     with open('msg.txt','r') as input_f:
         list_obj = json.load(input_f)
 
+    del list_obj[:-12] #clear file
+
     list_obj.append({
         'message_text': message.text
     })
-
     with open('msg.txt','w') as out_f:
         json.dump(list_obj, out_f)
     
     user = list_obj[-3]["message_text"]
     courier = list_obj[-1]["message_text"]
-
     msg = "\n"+str(list_obj[-2]["message_text"])+"\n\n\nПользователь: "+user+"\nКурьер: "+courier+" от "+get_last_sunday()
 
     bot.send_message(message.chat.id, msg, reply_markup=mm)

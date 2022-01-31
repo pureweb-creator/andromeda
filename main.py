@@ -43,7 +43,7 @@ def main(message):
         json.dump(list_obj, out_f)
     
     user = list_obj[-3]["message_text"]
-    courier = list_obj[-1]
+    courier = list_obj[-1]["message_text"]
 
     msg = "\n"+str(list_obj[-2]["message_text"])+"\n\n\nПользователь: "+user+"\nКурьер: "+courier+" от "+get_last_sunday()
 

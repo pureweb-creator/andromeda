@@ -28,6 +28,7 @@ button10 = types.KeyboardButton("Влад")
 button11 = types.KeyboardButton("Литр")
 button12 = types.KeyboardButton("Ювелир")
 button13 = types.KeyboardButton("Док")
+button13 = types.KeyboardButton("...")
 mm.add(button1,button2,button3,button4,button5,button6,button7,button8,button9,button10,button11,button12,button13)
 
 @bot.message_handler(content_types=["text"])
